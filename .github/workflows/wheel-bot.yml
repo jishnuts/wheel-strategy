@@ -1,0 +1,51 @@
+name: Wheel Strategy Bot
+
+# Runs Mon-Fri at 14:45 UTC = 9:45 AM ET (10:45 AM EDT Mar-Nov)
+# The bot checks the NYSE calendar and exits silently on holidays.
+on:
+  schedule:
+    - cron: '45 14 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'requirements.txt'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Wheel Strategy Bot
+        env:
+          ALPACA_API_KEY:     ${{ secrets.ALPACA_PAPER_KEY }}
+          ALPACA_SECRET_KEY:  ${{ secrets.ALPACA_PAPER_SECRET }}
+          GMAIL_USER:         ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO:           ${{ secrets.GMAIL_TO }}
+          PYTHONIOENCODING:   utf-8
+        run: python -m src.strategy
+
+      - name: Commit state + results
+        run: |
+          git config user.name  "Wheel Bot"
+          git config user.email "wheel-bot@users.noreply.github.com"
+          git add state.json results/
+          git diff --staged --quiet \
+            || git commit -m "bot: wheel state $(date -u +%Y-%m-%d)"
+          git push

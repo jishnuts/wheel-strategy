@@ -1,0 +1,10 @@
+{
+  "capital": 50000,
+  "cash_reserved": 0.0,
+  "total_premium_collected": 0.0,
+  "completed_cycles": 0,
+  "last_run": "2026-04-27T16:13:47.013798",
+  "bot_start_date": "2026-04-27",
+  "positions": [],
+  "closed_cycles": []
+}

@@ -1,0 +1,13 @@
+{
+  "date": "2026-04-27",
+  "capital": 50000,
+  "cash_reserved": 0.0,
+  "free_capital": 50000.0,
+  "total_pnl": 0,
+  "total_premium_collected": 0.0,
+  "annualised_yield_pct": 0.0,
+  "completed_cycles": 0,
+  "win_rate_pct": 0.0,
+  "open_positions": 0,
+  "open_slots": 3
+}

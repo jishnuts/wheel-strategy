@@ -1,10 +1,35 @@
 {
-  "capital": 50000,
-  "cash_reserved": 0.0,
-  "total_premium_collected": 0.0,
+  "capital": 50397.5,
+  "cash_reserved": 31500.0,
+  "total_premium_collected": 397.5,
   "completed_cycles": 0,
-  "last_run": "2026-04-27T16:13:47.013798",
+  "last_run": "2026-04-28T16:26:27.974213",
   "bot_start_date": "2026-04-27",
-  "positions": [],
+  "positions": [
+    {
+      "id": "wheel_GOOGL_20260428_18bc",
+      "ticker": "GOOGL",
+      "phase": "csp_open",
+      "cost_basis": 315.0,
+      "shares": 0,
+      "csp": {
+        "symbol": "GOOGL260605P00315000",
+        "option_type": "P",
+        "strike": 315.0,
+        "expiry": "2026-06-05",
+        "dte_at_open": 38,
+        "premium_received": 3.975,
+        "contracts": 1,
+        "opened_at": "2026-04-28T16:26:27.363598",
+        "closed_at": null,
+        "premium_paid_back": null
+      },
+      "cc": null,
+      "total_premium": 397.5,
+      "opened_at": "2026-04-28T16:26:27.363598",
+      "closed_at": null,
+      "notes": ""
+    }
+  ],
   "closed_cycles": []
 }
